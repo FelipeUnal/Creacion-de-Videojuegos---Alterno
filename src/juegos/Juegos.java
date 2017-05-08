@@ -1,12 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package juegos;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
@@ -15,10 +11,8 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.net.URL;
 import javax.swing.*;
-/**
- *
- * @author Estudiante
- */
+
+
 public class Juegos extends JFrame{
     
     public Juegos(){
@@ -40,6 +34,7 @@ class Panel extends JPanel implements ActionListener,MouseListener{
     
     private int x;
     private int y;
+    private int secuencia;
     private Timer Timer;
     private Color color;
     private URL url = null;
@@ -49,14 +44,28 @@ class Panel extends JPanel implements ActionListener,MouseListener{
     public Panel(){
         this.color = Color.CYAN;
         Timer = new Timer(25, this);
-        Timer.start();
         this.addMouseListener(this);
+        Timer.start();
     }
     
-    @Override
+    public Image loadImage(String ImageName){
+        ImageIcon icon = new ImageIcon(ImageName);
+        Image image = icon.getImage();
+        return image;
+    }
+    
+   @Override
     protected void paintComponent(Graphics g){
         
         super.paintComponent(g);
+        
+        Image fondo = loadImage("fondo.png");
+        //Image Animacion = loadImage("monkey-guybrush.png");
+        
+        g.drawImage(fondo, 0, 0, null);
+        
+        //g.drawImage(Animacion, x*104, y, x, y, x, y, x, y, this);
+        
         g.setColor(Color.cyan);
         g.fillRect(x, 350, 70, 50);
         g.setColor(Color.black);
@@ -135,5 +144,6 @@ class Panel extends JPanel implements ActionListener,MouseListener{
     public void mouseExited(MouseEvent e) {
         
     }
+    
 
 }
