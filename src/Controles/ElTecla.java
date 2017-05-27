@@ -22,6 +22,9 @@ public class ElTecla implements KeyListener{
     public boolean derecha;
     public boolean Saltar;
     public boolean Pegar;
+
+    public ElTecla() {
+    }
     
     public void actualizar(){
         arriba = Teclas[KeyEvent.VK_UP];
